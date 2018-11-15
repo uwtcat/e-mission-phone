@@ -5,17 +5,17 @@ angular.module('emission.incident.posttrip.prompt', ['emission.plugin.logger'])
     $ionicPopup, Logger) {
   var ptap = {};
   var REPORT = 737678; // REPORT on the phone keypad
-  var CHOOSE_MODE_TEXT = "Did you use AccessMap to get your there?";
+  var CHOOSE_MODE_TEXT = "Was there a walking portion to this trip? If YES, please respond to a survey";
   var TRIP_END_EVENT = "trip_ended";
 
   var reportMessage = function(platform) {
     var platformSpecificMessage = {
-      "ios": "Tap to rate your experience.",
-      "android": "Tap to rate your experience."
+      "ios": "Tap to respond to survey.",
+      "android": "Tap to respond to survey."
     };
     var selMessage = platformSpecificMessage[platform];
     if (!angular.isDefined(selMessage)) {
-      selMessage = "Tap to rate your experience.";
+      selMessage = "Tap to respond to survey.";
     }
     return selMessage;
   };
@@ -46,7 +46,7 @@ angular.module('emission.incident.posttrip.prompt', ['emission.plugin.logger'])
 
     var reportNotifyConfig = {
       id: REPORT,
-      title: "Did you use AccessMap to get your there?",
+      title: "Was there a walking portion to this trip? If YES, please respond to a survey",
       text: reportMessage(ionic.Platform.platform()),
       icon: 'file://img/icon.png',
       smallIcon: 'res://ic_mood_question.png',
